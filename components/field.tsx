@@ -19,7 +19,7 @@ export default function Filed({game}: { game: any }) {
                 }
                 forceUpdate();
             }
-            const mark = (e) => {
+            const mark = (e: any) => {
                 e.preventDefault();
                 game.mark({x, y});
                 forceUpdate();
