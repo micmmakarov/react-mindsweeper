@@ -1,6 +1,6 @@
-import {useState, useReducer} from 'react'
+import {useState, useReducer, CSSProperties} from 'react'
 
-export default function Filed({game}) {
+export default function Filed({game}: { game: any }) {
     const [redCell, setRedCell] = useState('');
     const field = game.field;
     const columns: any[] = [];
@@ -9,8 +9,8 @@ export default function Filed({game}) {
         ['grid-template-columns']: `repeat(${game.size.width}, 30px)`
     }
 
-    field.forEach((col, y) => {
-        const newColumn = col.map((cell, x) => {
+    field.forEach((col: any[], y: number) => {
+        const newColumn = col.map((cell: any, x: number) => {
             const onClick = () => {
                 game.open({x, y});
                 if (game.lost) {
