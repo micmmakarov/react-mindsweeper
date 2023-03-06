@@ -1,14 +1,14 @@
 import {useState, useReducer, CSSProperties} from 'react'
 
+export interface Styles {
+    [Key: string]: CSSProperties
+  }
+
 export default function Filed({game}: { game: any }) {
     const [redCell, setRedCell] = useState('');
     const field = game.field;
     const columns: any[] = [];
     const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-    const style = {
-        ['grid-template-columns']: `repeat(${game.size.width}, 30px)`
-    }
-
     field.forEach((col: any[], y: number) => {
         const newColumn = col.map((cell: any, x: number) => {
             const onClick = () => {
@@ -37,5 +37,5 @@ export default function Filed({game}: { game: any }) {
 
     })
 
-    return (<div style={style} className="field">{columns}</div>);
+    return (<div style={{gridTemplateColumns: `repeat(${game.size.width}, 30px)`}} className="field">{columns}</div>);
 }
