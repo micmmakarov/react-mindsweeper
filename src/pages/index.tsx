@@ -38,11 +38,12 @@ export default function Home() {
 
   return (
     <>
+      <div>Harcore Minesweeper, built in react, business logic implemented in <a href="https://www.npmjs.com/package/mindsweeper">Mindsweeper npm package</a></div>
       <Field game={game}></Field>
       <div>
         <div>Width: <input type="number" onChange={updateParams} name="width" defaultValue={defaultSize} /></div>
         <div>Height: <input type="number" onChange={updateParams} name="height" defaultValue={defaultSize} /></div>
-        <div>Mine count: <input type="mines" onChange={updateParams} name="mines" defaultValue={defaultMines} /></div>
+        <div>Mine count: <input type="number" onChange={updateParams} name="mines" defaultValue={defaultMines} /></div>
         <button onClick={generateGame}>Generate game</button>
       </div>
     </>

@@ -15,6 +15,7 @@ export default function Filed({game}: { game: any }) {
     field.forEach((col: any[], y: number) => {
         const newColumn = col.map((cell: any, x: number) => {
             const onClick = () => {
+                if (game.lost) return;
                 if (alwaysLose && !cell.hasMine) {
                     cell.hasMine = true;
                     cell.mines = 0;

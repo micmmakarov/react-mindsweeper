@@ -3,6 +3,7 @@
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-content: center;
+  user-select: none;
 }
 .cell {
   font-size: 22px;
