@@ -1,10 +1,13 @@
 import {useState, useReducer, CSSProperties} from 'react'
+import { useRouter } from "next/router"
 
 export interface Styles {
     [Key: string]: CSSProperties
   }
 
 export default function Filed({game}: { game: any }) {
+    const navigator = useRouter()
+    const alwaysLose = navigator.query.hardcore !== undefined;
     const [redCell, setRedCell] = useState('');
     const field = game.field;
     const columns: any[] = [];
@@ -12,6 +15,12 @@ export default function Filed({game}: { game: any }) {
     field.forEach((col: any[], y: number) => {
         const newColumn = col.map((cell: any, x: number) => {
             const onClick = () => {
+                if (alwaysLose && !cell.hasMine) {
+                    cell.hasMine = true;
+                    cell.mines = 0;
+                    game.addNumbersAroudMine({x, y});
+                }
+
                 game.open({x, y});
                 if (game.lost) {
                     game.openAll();

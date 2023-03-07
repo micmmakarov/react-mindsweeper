@@ -42,6 +42,7 @@ export default function Home() {
       <div>
         <input type="number" onChange={updateParams} name="width" defaultValue={defaultSize} />
         <input type="number" onChange={updateParams} name="height" defaultValue={defaultSize} />
+        <input type="mines" onChange={updateParams} name="mines" defaultValue={defaultMines} />
         <button onClick={generateGame}>Generate game</button>
       </div>
     </>
